@@ -59,7 +59,7 @@ Sets req.user (null if not logged in).
 
 Route can render login page (or redirect if already logged in).
 
-🧠 Key Concepts
+## 🧠 Key Concepts
 
 Cookie-based Authentication
 Authentication state is tracked by a cookie containing a session ID.
@@ -71,7 +71,7 @@ Session Store (in-memory)
 A Map is used to store active sessions.
 This resets when the server restarts (not persistent).
 
-Modular Design
+## Modular Design
 
 middlewares/auth.js: Guards routes.
 
