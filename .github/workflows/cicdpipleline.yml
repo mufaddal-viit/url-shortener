@@ -32,3 +32,10 @@ jobs:
 
       - name: Run controller/user test file
         run: npx jest controllers/user.test.js
+
+  Build:
+    runs-on: ubuntu-latest
+    needs: Test
+    steps:
+      - name: Print Hello World
+        run: echo "hello world"
