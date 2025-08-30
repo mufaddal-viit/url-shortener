@@ -24,5 +24,8 @@ jobs:
       - name: Run math test file
         run: npx jest test/test.js
 
-      - name: Run controller test file
+      - name: Run controller/url test file
         run: npx jest controllers/url.test.js
+
+      - name: Run controller/user test file
+        run: npx jest controllers/user.test.js
