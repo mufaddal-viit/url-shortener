@@ -1,0 +1,19 @@
+name: Deploy project
+run-name: Deploy the project only after Test and build
+
+# on:
+#   workflow_dispatch: # manual trigger
+# OR:
+# push:
+#   branches: [main]
+on:
+  workflow_run:
+    workflows: ["Test & Build"]
+    types:
+      - completed
+
+jobs:
+  Deploy:
+    steps:
+      - name: "Deploying Started"
+        run: echo "First deployment yml file executed"
