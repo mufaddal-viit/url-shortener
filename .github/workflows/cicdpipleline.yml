@@ -48,4 +48,4 @@ jobs:
         run: echo "${CUSTOM_VAR}"
 
       - name: "Print Secret"
-        run: echo ${{secrets.MY_API}}
+        run: echo ${{secrets.MY_APL}}
