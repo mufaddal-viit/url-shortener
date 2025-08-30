@@ -12,11 +12,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: set up Node
         uses: actions/setup-node@v4
         with:
           node-version: "18"
-      - name: Install dependencies
-        run: npm install
-      - name: Run tests and build
+
+      - name: Run first test file
         run: npx jest test/test.js
+
+      - name: Run second test file
+        run: npx jest test/app.test.js
