@@ -7,16 +7,19 @@ run-name: Deploy the project only after Test and build
 # push:
 #   branches: [main]
 on:
-  push:
-    branches: [main]
-  # workflow_run:
-  #   workflows: ["Test & Build"]
-  #   types:
-  #     - completed
+  # push:
+  #   branches: [main]
+  workflow_run:
+    workflows: ["CI CD Pipeline"]
+    types:
+      - completed
 
 jobs:
   Deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: "Deploying Started"
         run: echo "First deployment yml file executed"
+      - name: "deploy "
+        run: echo "Deploying after successful test-build"
