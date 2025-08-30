@@ -13,16 +13,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies (including devDependencies)
-        run: npm install --include=dev
-
       - name: set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
 
-      - name: Run first test file
+      - name: Install dependencies
+        run: npm install --include=dev
+
+      - name: Run math test file
         run: npx jest test/test.js
 
-      - name: Run second test file
-        run: npx jest test/app.test.js
+      - name: Run controller test file
+        run: npx jest controllers/url.test.js

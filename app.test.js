@@ -1,6 +1,6 @@
 const request = require("supertest");
-const app = require("../app");
-const URL = require("../models/url");
+const app = require("./app");
+const URL = require("./models/url");
 
 // Mock the URL model
 jest.mock("../models/url");
