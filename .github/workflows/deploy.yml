@@ -7,10 +7,12 @@ run-name: Deploy the project only after Test and build
 # push:
 #   branches: [main]
 on:
-  workflow_run:
-    workflows: ["Test & Build"]
-    types:
-      - completed
+  push:
+    branches: [main]
+  # workflow_run:
+  #   workflows: ["Test & Build"]
+  #   types:
+  #     - completed
 
 jobs:
   Deploy:
