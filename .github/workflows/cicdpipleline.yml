@@ -8,7 +8,7 @@ on:
 
 jobs:
   Test:
-    if: false
+    # if: false
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -26,13 +26,13 @@ jobs:
         run: npm install --include=dev
 
       - name: Run math test file
-        run: npx jest test/test.js
+        run: npm test -- test/test.js
 
       - name: Run controller/url test file
-        run: npx jest controllers/url.test.js
+        run: npm test controllers/url.test.js
 
       - name: Run controller/user test file
-        run: npx jest controllers/user.test.js
+        run: npm test controllers/user.test.js
 
   Build:
     runs-on: ubuntu-latest
@@ -48,4 +48,4 @@ jobs:
         run: echo "${CUSTOM_VAR}"
 
       - name: "Print Secret"
-        run: echo ${{secrets.MY_APL}}
+        run: echo ${{secrets.MY_API}}
