@@ -27,23 +27,27 @@ app.use("/user", userRoute);
 app.use("/", checkAuth, staticRoute);
 
 app.get("/url/:shortId", async (req, res) => {
-  const shortId = req.params.shortId;
-  const entry = await URL.findOneAndUpdate(
-    { shortId },
-    {
-      $push: {
-        visitHistory: {
-          timestamp: Date.now(),
+  try {
+    const shortId = req.params.shortId;
+    const entry = await URL.findOneAndUpdate(
+      { shortId },
+      {
+        $push: {
+          visitHistory: {
+            timestamp: Date.now(),
+          },
         },
-      },
+      }
+    );
+
+    if (!entry) {
+      return res.status(404).send("Short URL not found");
     }
-  );
 
-  if (!entry) {
-    return res.status(404).send("Short URL not found");
+    res.redirect(entry.redirectURL);
+  } catch (err) {
+    res.status(500).send("Internal Server Error");
   }
-
-  res.redirect(entry.redirectURL);
 });
 
 module.exports = app;
