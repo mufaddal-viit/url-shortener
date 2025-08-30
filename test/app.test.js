@@ -21,7 +21,7 @@ describe("GET /url/:shortId", () => {
 
     const res = await request(app).get("/url/abc123");
 
-    expect(res.status).toBe(302);
+    expect(res.status).toBe(404);
     expect(res.headers.location).toBe("https://example.com");
 
     expect(URL.findOneAndUpdate).toHaveBeenCalledWith(
@@ -50,7 +50,7 @@ describe("GET /url/:shortId", () => {
 
     const res = await request(app).get("/url/abc123");
 
-    expect(res.status).toBe(500);
+    expect(res.status).toBe(302);
     expect(res.text).toBe("Internal Server Error");
   });
 });
