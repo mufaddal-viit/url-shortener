@@ -13,6 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install dependencies (including devDependencies)
+        run: npm install --include=dev
+
       - name: set up Node
         uses: actions/setup-node@v4
         with:
