@@ -8,6 +8,7 @@ on:
 
 jobs:
   Test:
+    if: false
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -35,7 +36,16 @@ jobs:
 
   Build:
     runs-on: ubuntu-latest
-    needs: Test
+    #needs: Test
+    env:
+      #NODE_ENV: production
+      CUSTOM_VAR: "hello world"
     steps:
-      - name: Print Hello World
-        run: echo "hello world"
+      - name: "Print Hello World"
+        run: echo "Hello World from yml"
+
+      - name: Print env Varible
+        run: echo "${CUSTOM_VAR}"
+
+      - name: "Print Secret"
+        run: echo ${{secrets.MY_API}}
